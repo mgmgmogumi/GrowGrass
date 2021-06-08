@@ -2,6 +2,12 @@ body {
     text-align: center;
 }
 
+li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}
+
 .calendar-graph {
     margin-top: 30
 }
@@ -16,12 +22,6 @@ body {
     padding: 0;
     margin: 0 5px;
 
-}
-
-li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
 }
 
 @media screen and (min-width:768px) {
@@ -43,6 +43,14 @@ li {
         height: 128px;
         width: 828px;
     }
+
+    .github {
+        font-size: 10px;
+        color: #888888;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -63,6 +71,14 @@ li {
 
 	svg {
         height: 128px;
-        width: 350px;
+        width: 320px;
+    }
+
+    .github {
+        font-size: 8px;
+        color: #888888;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
     }
 }
