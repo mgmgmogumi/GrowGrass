@@ -3,9 +3,6 @@ const COLOR_ARRAY = ['#ebedf0','#9be9a8','#40c463','#30a14e','#216e39'];
 const grid = document.getElementById("grid");
 
 let color_value;
-let I_MAX;
-let J_MAX;
-let M_MAX;
 
 const growGrass = function (i,j) {
   // alert(i+','+j);
@@ -30,13 +27,15 @@ const draw = (I_MAX,J_MAX) => {
   }
 }
 
-const setMonth = (M_MAX) => {
-  const MONTH_ARRAY = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const setMonth = (M_MIN) => {
+  const MONTH_ARRAY = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   let month = new Date().getMonth();
   let x = 0
-  for (let m=month-2; m<month+M_MAX; m++) {
-      grid.insertAdjacentHTML('beforeend','<text x="' + (x*64+16) + '" y="-8" class="month">'+MONTH_ARRAY[m]+'</text>');
-      x++;
+  for (let m=month-M_MIN; m<month; m++) {
+    let i = m;
+    if(i<0) i += 12;
+    grid.insertAdjacentHTML('beforeend','<text x="' + (x*64+16) + '" y="-8" class="month">'+MONTH_ARRAY[i]+'</text>');
+    x++;
   }
 }
 
@@ -47,9 +46,9 @@ const mediaQuery = matchMedia('(min-width: 768px)')
 const mediaQueryDetection = mq => {
   if (mq.matches) {
     draw(49,7);
-    setMonth(10);
+    setMonth(12);
   } else {
-    draw(26,7);
+    draw(20,7);
     setMonth(5);
   }
 }
